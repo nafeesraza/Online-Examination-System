@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit question</title>
+</head>
+<body>
+    <h3> In this pahe you can edit whatever you want to modify</h3>
+    <form action="http://localhost:8000/OTS/save-edit-question/" method="post">
+        {% csrf_token %}
+    <table>
+        <tr>
+            <th>Qno</th>
+            <th>Question</th>
+            <th>Option a</th>
+            <th>Option b</th>
+            <th>Option c</th>
+            <th>Option d</th>
+            <th>Answer</th>
+        </tr>
+        <tr>
+            <td><input type="hidden" name="qno" value="{{question.qno}}"></td>
+            <td><textarea name="question">{{question.que}}</textarea></td>
+            <td><input type="text" name="optiona" value="{{question.optiona}}"></td>
+            <td><input type="text" name="optionb" value="{{question.optionb}}"></td>
+            <td><input type="text" name="optionc" value="{{question.optionc}}"></td>
+            <td><input type="text" name="optiond" value="{{question.optiond}}"></td>
+            <td><select name="answer">
+                <option value="a" {% if question.answer == "a" %}selected{% endif %}>a</option>
+                <option value="b" {% if question.answer == "b" %}selected{% endif %}>b</option>
+                <option value="c" {% if question.answer == "c" %}selected{% endif %}>c</option>
+                <option value="d" {% if question.answer == "d" %}selected{% endif %}>d</option>
+            </select></td>
+        </tr>
+    </table>
+    <div><input type="submit" value="save"></div>
+    </form>
+</body>
+</html>
